@@ -348,3 +348,12 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+
+# Own Stuff
+.vscode/
+TrainingsApiApp.code-workspace
+TrainingsApiApp.sln
+**/bin/
+**/obj/
+**/appsettings.json
