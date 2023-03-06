@@ -29,8 +29,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-// app.MapGet("/", () => "test");
 app.MapTestModelEndpoints("/test");
+app.MapTestModelPlusEndpoints("/testplus");
 
 app.UseCors("AllowAll");
 

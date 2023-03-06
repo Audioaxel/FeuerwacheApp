@@ -17,6 +17,7 @@ public static class ModuleExtensions
             options.UseSqlServer(connectionString));
 
         services.AddScoped<IDatabaseRepository<TestModelDto, CreateTestModelDto>, TestModelData>();
+        services.AddScoped<IDatabaseRepository<TestModelPlusDto, CreateTestModelPlusDto>, TestModelPlusData>();
         services.AddAutoMapper(typeof(MapperConfig));
     }
 }

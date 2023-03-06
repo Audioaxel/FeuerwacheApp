@@ -10,5 +10,8 @@ public class MapperConfig : Profile
 	{
 		CreateMap<TestModel, TestModelDto>().ReverseMap();
 		CreateMap<TestModel, CreateTestModelDto>().ReverseMap();
+
+		CreateMap<TestModelPlus, TestModelPlusDto>().ReverseMap();
+		CreateMap<TestModelPlus, CreateTestModelPlusDto>().ReverseMap();
 	}
 }
