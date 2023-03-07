@@ -356,4 +356,4 @@ TrainingsApiApp.code-workspace
 TrainingsApiApp.sln
 **/bin/
 **/obj/
-**/appsettings.json
+**/secrets.json
