@@ -5,7 +5,7 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <RootNamespace>_01_WebApi</RootNamespace>
-    <UserSecretsId>229b83d2-6a65-4f2f-992b-7a3032fbb817</UserSecretsId>
+    <UserSecretsId>90c98222-83f6-469e-b0cc-5bffb376ae1e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
