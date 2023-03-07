@@ -7,18 +7,18 @@ WORKDIR /app
 # Kopieren der Projektdateien in das Arbeitsverzeichnis
 COPY . .
 
-# Erstellen und Veröffentlichen der Class-Library WebApiLib
-WORKDIR /app/WebApiLib
+# Erstellen und Veröffentlichen des MainProjects
+WORKDIR /app/01_WebApi
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
-# Erstellen und Veröffentlichen der Class-Library EfAccessLib
-WORKDIR /app/EfAccessLib
+# Erstellen und Veröffentlichen einer ClassLib
+WORKDIR /app/10_DataLib
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
-# Erstellen und Veröffentlichen der Konsolenanwendung
-WORKDIR /app/ConsoleApp
+# Erstellen und Veröffentlichen einer ClassLib
+WORKDIR /app/21_EfAccessLib
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
@@ -28,18 +28,18 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0
 # Arbeitsverzeichnis
 WORKDIR /app
 
-# Kopieren der Veröffentlichungsdateien der Class-Library WebApiLib aus dem Build-Container
-COPY --from=build-env /app/WebApiLib/out ./
+# Kopieren der Veröffentlichungsdateien des MainProject aus dem Build-Container
+COPY --from=build-env /app/01_WebApi/out ./
 
-# Kopieren der Veröffentlichungsdateien der Class-Library EfAccessLib aus dem Build-Container
-COPY --from=build-env /app/EfAccessLib/out ./
+# Kopieren der Veröffentlichungsdateien einer ClassLib aus dem Build-Container
+COPY --from=build-env /app/10_DataLib/out ./
 
-# Kopieren der Veröffentlichungsdateien der Konsolenanwendung aus dem Build-Container
-COPY --from=build-env /app/ConsoleApp/out ./
+# Kopieren der Veröffentlichungsdateien einer ClassLib aus dem Build-Container
+COPY --from=build-env /app/21_EfAccessLib/out ./
 
 # Copy appsettings.json
-COPY ./WebApiLib/appsettings.json .
+COPY ./01_WebApi/appsettings.json .
 
-# Starten der Konsolenanwendung
-# EXPOSE 5000 5050 5080
-ENTRYPOINT ["dotnet", "ConsoleApp.dll"]
+# Starten der Anwendung
+EXPOSE 2001
+ENTRYPOINT ["dotnet", "01_WebApi.dll"]
